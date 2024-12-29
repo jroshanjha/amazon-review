@@ -8,12 +8,18 @@ git clone https://github.com/
 python -m venv my_code
 my_code/Scripts/activate
 
-### Emplyees Loan Amount Prediction Database:- http://www.kagle.com/datasets/
+# Load Dataset form
+### Amazon Product Review Database:- http://www.kagle.com/datasets/
+
+# Clean and remove unnecessary Column which note required fro this task.
+
+# Feature Engineeer using TF-IDF Vectorization methods 
+
+# use LogisticRegression Algorithms for used task and deployment on flask.
+
 
 # Install dependencies
 pip install -r requirements.txt
 
 conda create -p venv python==3.10 -y 
 conda activate venv/
-
-# Load Dataset form [Kaggle.com/dataset]
