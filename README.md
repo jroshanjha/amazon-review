@@ -15,3 +15,5 @@ pip install -r requirements.txt
 
 conda create -p venv python==3.10 -y 
 conda activate venv/
+
+# Load Dataset form [Kaggle.com/dataset]
