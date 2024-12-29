@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>NLP Sentiment Analytics</title> -->
+    <title>Review Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            /*max-width: 1200px;*/
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+       /* .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        } */
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /*.card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }  . card h3*/ 
+ 
+        .result h3 {
+            margin-top: 0;
+        }
+
+        /*.chart, .keywords, .history {
+            min-height: 150px;
+            text-align: center;
+            line-height: 150px;
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <!-- <h1>NLP Sentiment Analytics</h1> -->
+        <h1>Review Prediction</h1>
+        <nav>
+            <a href="#">Home</a>
+            <!-- <a href="#">Analytics</a>
+            <a href="#">Settings</a>
+            <a href="#">Help</a> -->
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="search-bar">
+            <!-- <input type="text" placeholder="Enter text to analyze sentiment...">
+            <button>Analyze</button> -->
+            <input id="review-input" type="text" placeholder="Enter a review to predict sentiment...">
+            <button onclick="predictSentiment()">Predict</button>
+        </div>
+
+        <!-- <div class="dashboard">
+            <div class="card">
+                <h3>Sentiment Overview</h3>
+                <div class="chart">Pie Chart Placeholder</div>
+            </div>
+            <div class="card">
+                <h3>Trending Keywords</h3>
+                <div class="keywords">Keywords Placeholder</div>
+            </div>
+            <div class="card">
+                <h3>Recent History</h3>
+                <div class="history">History Placeholder</div>
+            </div>
+        </div> -->
+        <div id="result" class="result" style="display: none;">
+            <h3 style="color:blue;">Prediction Result</h3>
+            <p><strong>Review:</strong> <span id="review-text"></span></p>
+            <p><strong>Sentiment:</strong> <span id="sentiment"></span></p>
+        </div>
+    </div>
+
+    <footer>
+        <!-- <p>&copy; 2024 NLP Analytics Dashboard | Contact Us | Follow Us on Social Media</p> -->
+        <p>&copy; 2024 Review Prediction Dashboard | Contact Us | Follow Us on Social Media</p>
+    </footer>
+
+    <script>
+        async function predictSentiment() {
+            const reviewInput = document.getElementById('review-input').value;
+            if (!reviewInput) {
+                alert('Please enter a review.');
+                return;
+            }
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ review: reviewInput })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                document.getElementById('review-text').textContent = data.review;
+                document.getElementById('review-text').style.color
+                document.getElementById('sentiment').textContent = data.sentiment;
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert(data.error || 'An error occurred.');
+            }
+        }
+    </script>
+</body>
+</html>
