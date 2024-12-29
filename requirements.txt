@@ -1,0 +1,10 @@
+Flask
+scikit-learn==1.3.0
+#scikit-learn
+gunicorn
+numpy==1.24.0
+pandas
+seaborn 
+matplotlib
+joblib==1.3.0
+nltk
