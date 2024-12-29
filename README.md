@@ -1,5 +1,5 @@
 # amazon-review
-This is Amazon Product review with ratings score 0-5
+This is Amazon Product review with ratings score 0-5 so our target or task to predict Sentiment Analaysis for review is positive or negative or Netural.
 
 # Git Clone....
 git clone https://github.com/ 
