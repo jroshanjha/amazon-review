@@ -15,8 +15,7 @@ my_code/Scripts/activate
 
 # Feature Engineeer using TF-IDF Vectorization methods 
 
-# use LogisticRegression Algorithms for used task and deployment on flask.
-
+# use LogisticRegression Algorithms to perform this task and deployment on flask.
 
 # Install dependencies
 pip install -r requirements.txt
